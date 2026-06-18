@@ -1,0 +1,34 @@
+# Environment secrets
+.env
+.env.local
+*.env
+!*.env.example
+
+# Node / frontend
+node_modules/
+dist/
+.vite-temp/
+*.local
+
+# Python / backend & ml
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Logs
+*.log
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+.claude/settings.local.json

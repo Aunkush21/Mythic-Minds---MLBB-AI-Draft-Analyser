@@ -1,0 +1,82 @@
+{
+  "version": "v1",
+  "trained_at": "2026-06-18T08:47:15.897964+00:00",
+  "n_training_rows": 2000,
+  "n_matches": 1000,
+  "feature_columns": [
+    "counter_advantage",
+    "synergy_diff",
+    "winrate_diff",
+    "pickrate_diff",
+    "banrate_diff",
+    "op_count_diff",
+    "meta_count_diff",
+    "role_diversity_diff",
+    "role_Tank_diff",
+    "role_Fighter_diff",
+    "role_Assassin_diff",
+    "role_Mage_diff",
+    "role_Marksman_diff",
+    "role_Support_diff",
+    "damage_physical_diff",
+    "damage_magic_diff",
+    "lane_fit_diff",
+    "ban_meta_pressure_diff",
+    "rank_ordinal"
+  ],
+  "feature_groups": {
+    "counter_pick": [
+      "counter_advantage"
+    ],
+    "team_synergy": [
+      "synergy_diff"
+    ],
+    "meta_strength": [
+      "winrate_diff",
+      "pickrate_diff",
+      "banrate_diff",
+      "op_count_diff",
+      "meta_count_diff"
+    ],
+    "team_composition": [
+      "role_diversity_diff",
+      "role_Tank_diff",
+      "role_Fighter_diff",
+      "role_Assassin_diff",
+      "role_Mage_diff",
+      "role_Marksman_diff",
+      "role_Support_diff",
+      "damage_physical_diff",
+      "damage_magic_diff"
+    ],
+    "lane_fit": [
+      "lane_fit_diff"
+    ],
+    "ban_pressure": [
+      "ban_meta_pressure_diff"
+    ],
+    "match_context": [
+      "rank_ordinal"
+    ]
+  },
+  "hyperparameters": {
+    "max_depth": 5,
+    "learning_rate": 0.10602213465763781,
+    "subsample": 0.8987647014661443,
+    "colsample_bytree": 0.8241297317797966,
+    "min_child_weight": 2,
+    "reg_alpha": 0.002193960306254157,
+    "reg_lambda": 0.003306104843756275
+  },
+  "n_estimators": 383,
+  "held_out_test_metrics": {
+    "roc_auc": 0.9740888888888889,
+    "log_loss": 0.24608497870400498,
+    "brier_score": 0.06331359003215722,
+    "accuracy": 0.9533333333333334,
+    "precision": 0.9415584415584416,
+    "recall": 0.9666666666666667,
+    "f1": 0.9539473684210527
+  },
+  "data_caveat": "Trained on synthetically generated matches (database/seed/matches.py) whose win labels are a noisy-but-direct function of hero is_meta/is_op flags. Held-out metrics (AUC ~0.97) reflect recovery of that synthetic rule, not real-world MLBB draft prediction accuracy. Retrain on real match data before using these metrics in production claims."
+}

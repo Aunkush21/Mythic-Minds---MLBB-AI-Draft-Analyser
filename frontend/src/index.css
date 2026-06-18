@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --background: #f4f8fa;
+  --background-end: #e4ecef;
+  --foreground: #0a1822;
+  --muted: #5b6b72;
+  --glass-fill: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(220, 150, 60, 0.25);
+  --glass-fill-strong: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --background: #0a1822;
+  --background-end: #050b10;
+  --foreground: #e7f6fa;
+  --muted: #8fa3ac;
+  --glass-fill: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(243, 167, 63, 0.18);
+  --glass-fill-strong: rgba(255, 255, 255, 0.08);
+}
+
+@theme {
+  --font-display: "Rajdhani", "sans-serif";
+  --font-sans: "Inter", "sans-serif";
+
+  --color-background: var(--background);
+  --color-background-end: var(--background-end);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-glass-fill: var(--glass-fill);
+  --color-glass-fill-strong: var(--glass-fill-strong);
+  --color-glass-border: var(--glass-border);
+
+  --color-accent: #f3a73f;
+  --color-accent-dim: #c97a1f;
+  --color-gold: #f2c14e;
+  --color-ally: #3b82f6;
+  --color-ally-dim: #1e40af;
+  --color-enemy: #ef4444;
+  --color-enemy-dim: #991b1b;
+  --color-positive: #4ade80;
+  --color-negative: #f87171;
+  --color-neutral: #94a3b8;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(160deg, var(--color-background) 0%, var(--color-background-end) 100%);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.glass-panel {
+  background: var(--color-glass-fill);
+  border: 1px solid var(--color-glass-border);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 24px -12px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass-panel-strong {
+  background: var(--color-glass-fill-strong);
+  border: 1px solid var(--color-glass-border);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 32px -14px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass-panel-interactive {
+  cursor: pointer;
+}
+
+.glass-panel-interactive:hover {
+  border-color: var(--color-accent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 36px -14px rgba(0, 0, 0, 0.45), 0 0 28px -4px var(--color-accent);
+  transform: translateY(-3px);
+}
+
+.glass-panel-solid {
+  background: color-mix(in srgb, var(--color-background) 94%, transparent);
+  border: 1px solid var(--color-glass-border);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-glass-border);
+  border-radius: 4px;
+}
+
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(-2deg); }
+}
+
+@keyframes mascot-stumble {
+  0%, 85%, 100% { transform: rotate(0deg) translateX(0); }
+  88% { transform: rotate(-8deg) translateX(-2px); }
+  91% { transform: rotate(6deg) translateX(2px); }
+  94% { transform: rotate(-3deg) translateX(0); }
+}
+
+@keyframes mascot-shake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(-3px) rotate(-3deg); }
+  40% { transform: translateX(3px) rotate(3deg); }
+  60% { transform: translateX(-3px) rotate(-2deg); }
+  80% { transform: translateX(3px) rotate(2deg); }
+}
+
+@keyframes mascot-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-10px) scale(1.05); }
+  60% { transform: translateY(0) scale(0.97); }
+}
+
+@keyframes mascot-tilt {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@keyframes mascot-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-mascot-idle {
+  animation: mascot-bob 3.2s ease-in-out infinite, mascot-stumble 9s ease-in-out infinite;
+}
+
+.animate-mascot-happy {
+  animation: mascot-bounce 0.7s ease-in-out infinite;
+}
+
+.animate-mascot-angry {
+  animation: mascot-shake 0.5s ease-in-out infinite;
+}
+
+.animate-mascot-confused {
+  animation: mascot-tilt 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse-ready {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 55%, transparent); }
+  50% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--color-accent) 0%, transparent); }
+}
+
+.animate-pulse-ready {
+  animation: pulse-ready 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-low-health {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-enemy) 60%, transparent); }
+  50% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--color-enemy) 0%, transparent); }
+}
+
+.animate-pulse-low-health {
+  animation: pulse-low-health 1s ease-in-out infinite;
+}
+
+@keyframes mascot-recall {
+  0% { transform: scale(1); opacity: 1; filter: brightness(1) saturate(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  18% { transform: scale(1.06); opacity: 1; filter: brightness(1.3) saturate(0.9); box-shadow: 0 0 16px 4px rgba(255, 255, 255, 0.35); }
+  36% { transform: scale(1); opacity: 1; filter: brightness(1.1) saturate(1); box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.18); }
+  54% { transform: scale(1.08); opacity: 1; filter: brightness(1.5) saturate(0.7); box-shadow: 0 0 24px 6px rgba(255, 255, 255, 0.5); }
+  68% { transform: scale(1.15); opacity: 1; filter: brightness(2.1) saturate(0.3); box-shadow: 0 0 38px 12px rgba(255, 255, 255, 0.85); }
+  78% { transform: scale(0.15); opacity: 0.2; filter: brightness(3) saturate(0); box-shadow: 0 0 48px 16px rgba(255, 255, 255, 0.9); }
+  86% { transform: scale(0.15); opacity: 0; filter: brightness(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  94% { transform: scale(0.4); opacity: 0.6; filter: brightness(1.6) saturate(1); }
+  100% { transform: scale(1); opacity: 1; filter: brightness(1) saturate(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.animate-mascot-recall {
+  animation: mascot-recall 5s ease-in-out 1;
+}
