@@ -286,7 +286,7 @@ export function DraftRoomPage() {
           <h1 className="font-display text-3xl font-bold">Draft Room</h1>
           <p className="text-muted">Build a full draft to get win-probability, pick, and build insights.</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <select
             value={patchVersion}
             onChange={(e) => setPatchVersion(e.target.value)}
