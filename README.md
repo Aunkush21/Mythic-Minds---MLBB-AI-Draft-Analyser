@@ -3,7 +3,6 @@
 AI-powered draft intelligence, hero recommendations, and build optimization for **Mobile Legends: Bang Bang**.
 
 **Live app:** https://mythicmind.vercel.app
-**API:** https://mythicminds-api.onrender.com
 
 > Unofficial fan project — not affiliated with or endorsed by Moonton. All Mobile Legends: Bang Bang assets, trademarks, and content belong to Moonton.
 
