@@ -16,6 +16,7 @@ scikit-learn
 xgboost
 shap
 joblib
+pyarrow
 
 # Testing
 pytest>=8.0
